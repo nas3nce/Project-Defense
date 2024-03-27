@@ -1,0 +1,35 @@
+.logo {
+  position: relative;
+  height: 60px;
+  width: auto;
+  left: 80px;
+}
+
+.center-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: -6.5%;
+}
+
+.nav-button {
+  margin: 8px 12px 8px;
+  width: 100px;
+  font-size: 16px;
+  /* font-weight: bold; */
+  /* font-family:'Trebuchet MS'; */
+  font-family: Roboto, "Helvetica Neue", sans-serif
+}
+
+.navbar-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.profile-fab {
+right: 90px;
+ background-color: #87a5ff !important
+}

@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div class="register-form">
+    <h2 class="form-title">Register</h2>
+
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="registerHandler()">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" matInput placeholder="Enter your Username">
+            <mat-error *ngIf="form.get('username')?.errors?.['required']">
+              Username is required</mat-error>
+            <mat-error *ngIf="form.get('username')?.errors?.['minlength']">
+              Username should be longer than {{form.get('username')?.errors?.['minlength']?.['requiredLength']}}
+              characters</mat-error>
+            <mat-error *ngIf="form.get('username')?.errors?.['maxlength']">
+              Username should be shorter than {{form.get('username')?.errors?.['maxlength']?.['requiredLength']}}
+              characters </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput type="email" placeholder="Enter your email">
+            <mat-error *ngIf="form.get('email')?.errors?.['required']">
+              Email is required</mat-error>
+            <mat-error *ngIf="!form.get('email')?.errors?.['required'] && form.get('email')?.errors?.['emailInvalid']">
+              Email is invalid</mat-error>
+          </mat-form-field>
+
+          <ng-container formGroupName="pass">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input formControlName="password" [type]="passwordsHidden ? 'password' : 'text'" matInput
+                placeholder="Enter your password">
+              <mat-icon matSuffix (click)="togglePassVisibility()">{{ passwordsHidden ? 'visibility' :
+                'visibility_off' }}</mat-icon>
+              <mat-error *ngIf="form.get('pass')?.get('password')?.errors?.['required']">
+                Password is required</mat-error>
+              <mat-error *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']">
+                Password should be longer than
+                {{form.get('pass')?.get('password')?.errors?.['minlength']?.['requiredLength']}}
+                characters</mat-error>
+              <mat-error *ngIf="form.get('pass')?.get('password')?.errors?.['maxlength']">
+                Password should be shorter than
+                {{form.get('pass')?.get('password')?.errors?.['maxlength']?.['requiredLength']}}
+                characters </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Confirm Password</mat-label>
+              <input formControlName="rePassword" matInput [type]="passwordsHidden ? 'password' : 'text'"
+                placeholder="Confirm your password">
+              <mat-icon matSuffix (click)="togglePassVisibility()">{{ passwordsHidden
+                ?'visibility':'visibility_off'}}</mat-icon>
+              <mat-error *ngIf="form.get('pass')?.get('rePassword')?.errors?.['required']">
+                Confirm Password is required</mat-error>
+              <mat-hint *ngIf="form.get('pass')?.get('rePassword')?.dirty && form.get('pass')?.errors?.['passwordsDontMatch']">Password Doesn't Match </mat-hint>
+            </mat-form-field>
+          </ng-container>
+
+
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input formControlName="phone" matInput type="tel" placeholder="Enter your phone number">
+
+          </mat-form-field>
+          <button class="submit-button" mat-raised-button color="primary"
+            type="submit">Register</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.right-side {    
+    position: absolute;
+    background-repeat:space;
+    background-image: url(../../../assets/gato.jpg);
+    top: 0;
+    right: 0;
+    width: 58%;
+    height: 100%;
+    font-size: 200px; 
+    font-weight: bold; 
+    color: white;
+  }
+
+

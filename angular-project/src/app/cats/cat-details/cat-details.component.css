@@ -1,0 +1,153 @@
+.cards-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card {
+  width: 1400px;
+  justify-content: center;
+  height: 250px;
+  display: flex;
+  border: 4px solid #3f51b5;
+  border-radius: 7px;
+  padding: 20px;
+  margin: 30px;
+  margin-top: 5%;
+  background-color: white;
+}
+
+.card-image {
+  height: 250px;
+  width: 300px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.card-content {
+  height: 210px;
+  width: 68%;
+  background-color: white;
+  padding: 20px;
+  background-color: #bcefff;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  text-align: center;
+  align-content: center;
+}
+
+.description-container {
+  position: absolute;
+  word-wrap: break-word;
+  width: 650px;
+  height: fit-content;
+  overflow: hidden;
+  margin-left: 150px;
+  max-height: 100px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  margin: 13px;
+  bottom: 55%;
+  left: 93%
+}
+
+.pink {
+  background-color: rgb(255, 107, 132) !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.container {
+  width: 700px;
+  border: 4px solid #3f51b5;
+  border-radius: 7px;
+  padding: 20px;
+  margin: 0 auto;
+  height: 100px;
+  margin-top: 5%;
+  background-color: white;
+  margin-bottom: 100px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  width: 100%;
+}
+
+.comments {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-container {
+  position: relative;
+  width: 1200px;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  margin: 15px;
+  display: flex;
+  border: 2px solid #3f51b5;
+  border-radius: 7px;
+  background-color: white;
+}
+
+.profile {
+  border: 4px solid #3f51b5;
+  contain: content;
+  margin-right: 90%;
+}
+
+.username {
+  margin-top: 7px;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  font-weight: bold;
+  margin-left: 7px;
+}
+
+.date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 7px;
+  font-weight: bold;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  align-self: center;
+  margin: 1em 0;
+  width: 4em;
+  height: 4em;
+  margin-left: 7px;
+}
+
+.comment {
+  width: 65%;
+  height: 80%;
+  position: absolute;
+  word-wrap: break-word;
+  overflow: hidden;
+}
