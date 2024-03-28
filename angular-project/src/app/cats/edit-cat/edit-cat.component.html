@@ -1,7 +1,7 @@
 <!-- Container with black border -->
 <div class="container">
     <div class="register-form">
-        <h2 class="form-title">Add Kitten</h2>
+        <h2 class="form-title">Edit Kitten</h2>
 
         <mat-card>
             <mat-card-content>
@@ -24,7 +24,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Choose Breed</mat-label>
                         <input type="text" placeholder="Pick one" aria-label="Choose Breed" matInput
-                            [formControl]="form.controls.breed" [matAutocomplete]="auto" formControlName="breed">
+                            [formControl]="form.controls.breed" [matAutocomplete]="auto" formControlName="breed" >
                         <mat-autocomplete #auto="matAutocomplete">
                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                                 {{option}}
@@ -35,7 +35,7 @@
 
                     <mat-form-field appearance="fill">
                         <mat-label>Age</mat-label>
-                        <input matInput formControlName="age" type="number" placeholder="Enter cats age" #ageInput>
+                        <input matInput formControlName="age" type="number" placeholder="Enter cats age">
                         <mat-error *ngIf="form.get('age')?.errors?.['required']">
                             Cat name is required</mat-error>
                         <mat-error *ngIf="form.get('age')?.errors?.['min']">
@@ -51,22 +51,26 @@
                         <mat-label>Image</mat-label>
                         <input matInput formControlName="image" placeholder="Enter image link">
                         <mat-error *ngIf="form.get('image')?.errors?.['required']"> Image is required" </mat-error>
-                        <mat-error *ngIf="form.get('image')?.errors?.['pattern']"> Image should be a valid kink
+                        <mat-error *ngIf="form.get('image')?.errors?.['pattern']"> Image should be a valid link
                             "http://" or "https://" </mat-error>
                     </mat-form-field>
 
 
                     <mat-form-field>
                         <mat-label>Description</mat-label>
-                        <textarea matInput formControlName="description" placeholder="Describe your kitten"></textarea>
-                        <mat-error *ngIf="form.get('description')?.errors?.['required']">Description is required</mat-error>
-                        <mat-error *ngIf="form.get('description')?.errors?.['minlength']">Description is too short</mat-error>
-                        <mat-error *ngIf="form.get('description')?.errors?.['maxlength']">Description is too short</mat-error>
+                        <textarea touched matInput formControlName="description"
+                            placeholder="Describe your kitten" ></textarea>
+                        <mat-error *ngIf="form.get('description')?.errors?.['required']">Description is
+                            required</mat-error>
+                        <mat-error *ngIf="form.get('description')?.errors?.['minlength']">Description is too
+                            short</mat-error>
+                        <mat-error *ngIf="form.get('description')?.errors?.['maxlength']">Description is too
+                            short</mat-error>
                     </mat-form-field>
 
 
 
-                    <button class="submit-button" mat-raised-button color="primary" type="submit">Add Kitten</button>
+                    <button class="submit-button" mat-raised-button color="primary" type="submit">Edit Kitten</button>
                 </form>
             </mat-card-content>
         </mat-card>

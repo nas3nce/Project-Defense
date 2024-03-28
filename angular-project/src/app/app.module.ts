@@ -13,6 +13,8 @@ import { CardsComponent } from './main/cards/cards.component';
 import { PicturesComponent } from './main/pictures/pictures.component';
 import { CatsModule } from './cats/cats.module';
 import { AppInterceptorProvider } from './app-interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,16 +22,17 @@ import { AppInterceptorProvider } from './app-interceptor';
     TestDirective,
     MainComponent,
     CardsComponent,
-    PicturesComponent
+    PicturesComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,    
     CoreModule,
     UserModule,
-    MaterialModule,
-    CatsModule
+    CatsModule,
+    MaterialModule,  
   ],
   providers: [AppInterceptorProvider],
   bootstrap: [AppComponent]

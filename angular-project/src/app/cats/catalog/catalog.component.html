@@ -1,7 +1,7 @@
 <div class="cards-container">
 
-    <div class="div">
-        <a routerLink="/details">
+    <!-- <div class="div">
+        <a routerLink="/cats/catalog/details">
             <div class="card">
                 <img class='card-image' src="../../../assets/download.jpg" alt="Placeholder image">
                 <div class="card-content">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="div">
-        <a routerLink="/details">
+        <a routerLink="/cats/catalog/details">
             <div class="card">
                 <img class='card-image' src="../../../assets/download (1).jpg" alt="Placeholder image">
                 <div class="card-content">
@@ -31,70 +31,23 @@
             </div>
         </a>
     </div>
-    <div class="div">
-        <a routerLink="/details">
+    -->
+
+    <div class="div" *ngFor="let cat of posts">
+        <a routerLink="/cats/catalog/{{cat._id}}">
             <div class="card">
-                <img class='card-image' src="../../../assets/download.jpg" alt="Placeholder image">
+                <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
                 <div class="card-content">
-                    <h2>Name</h2>
-                    <h4>age</h4>
-                    <p>breed</p>
+                    <h2>{{cat.themeName}}</h2>
+                    <h4>{{cat.age}}</h4>
+                    <p>{{cat.breed}}</p>
                     <p class="description-container">
-                        DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
+                        {{cat.description}}
                     </p>
                 </div>
             </div>
         </a>
     </div>
-    <div class="div">
-        <a routerLink="/details">
-            <div class="card">
-                <img class='card-image' src="../../../assets/download (1).jpg" alt="Placeholder image">
-                <div class="card-content">
-                    <h2>Name</h2>
-                    <h4>age</h4>
-                    <p>breed</p>
-                    <p class="description-container">
-                        DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
-                    </p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="div">
-        <a routerLink="/details">
-            <div class="card">
-                <img class='card-image' src="../../../assets/download (1).jpg" alt="Placeholder image">
-                <div class="card-content">
-                    <h2>Name</h2>
-                    <h4>age</h4>
-                    <p>breed</p>
-                    <p class="description-container">
-                        DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
-                    </p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-
-    <div class="div">
-        <a routerLink="/details">
-            <div class="card">
-                <img class='card-image' src="../../../assets/download.jpg" alt="Placeholder image">
-                <div class="card-content">
-                    <h2>Name</h2>
-                    <h4>age</h4>
-                    <p>breed</p>
-                    <p class="description-container">
-                        DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
-                    </p>
-                </div>
-            </div>
-        </a>
-    </div>
-
 
 
 

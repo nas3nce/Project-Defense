@@ -1,0 +1,2 @@
+export const catBreeds = ['Abyssinian', 'American Bobtail', 'American Curl', 'American Shorthair', 'American Shorthair cat', 'Bengal cat', 'Birman', 'British Shorthair', 'Burmese', 'Cornish Rex', 'Devon Rex', 'Egyptian Mau', 'Maine Coon', 'Norwegian Forest cat', 'Ocicat', 'Oriental Shorthair', 'Persian cat', 'Ragdoll', 'Russian Blue', 'Scottish Fold', 'Siamese', 'Siberian', 'Sphynx', 'Turkish Angora']
+

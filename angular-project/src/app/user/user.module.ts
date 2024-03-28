@@ -9,6 +9,7 @@ import { MaterialModule } from 'src/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { UserRoutingModule } from './user-routing.module';
 
 
 
@@ -26,7 +27,8 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    UserRoutingModule
   ]
 })
 export class UserModule { }

@@ -1,51 +1,67 @@
 <div class="cards-container">
 
-
     <div class="div">
         <div class="card">
-            <img class='card-image' src="../../../assets/download.jpg" alt="Placeholder image">
+            <img class='card-image' src="{{cat?.image}}" alt="Placeholder image">
             <div class="card-content">
-                <h2 class="bold">Name</h2>
-                <h4 class="bold">age</h4>
-                <p class="bold">breed</p>
+                <h2 class="bold">{{cat?.themeName}}</h2>
+                <h4 class="bold">Age: {{cat?.age}}</h4>
+                <p class="bold">Breed: {{cat?.breed}}</p>
                 <p class="description-container">
-                    DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
+                    {{cat?.description}}
                 </p>
-                <button class="btn pink" mat-fab color="primary" aria-label="Example icon button with a heart icon">
+
+                <button *ngIf="!isUser || IfAlreadyLiked" disabled="true" class="btn pink" mat-fab color="primary"
+                    aria-label="Example icon button with a heart icon">
+                    {{cat?.subscribers?.length}}
                     <mat-icon>favorite</mat-icon>
                 </button>
-                <button class="btn" color="primary" mat-fab aria-label="Example icon button with a heart icon">
-                    <mat-icon>edit</mat-icon>
+
+                <button *ngIf="isUser && !IfAlreadyLiked" (click)="likeHandler()" class="btn pink" mat-fab
+                    color="primary" aria-label="Example icon button with a heart icon">
+                    {{cat?.subscribers?.length}}
+                    <mat-icon>favorite</mat-icon>
                 </button>
-                <button class="btn" color="primary" mat-fab aria-label="Example icon button with a heart icon">
-                    <mat-icon>delete</mat-icon>
-                </button>
+
+
+                <ng-container *ngIf="isOwner">
+                    <button routerLink="/cats/catalog/{{cat?._id}}/edit" class="btn" color="primary" mat-fab>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="deleteHandler()" class="btn" color="primary" mat-fab>
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </ng-container>
             </div>
         </div>
     </div>
 
 
-    <div class="comments">
-        <div class="comment-container">
-            <div class="username">USERNAME</div>
-            <div class="date">20.20.20.20</div>
 
-                <img class="image" src="../../../assets/profile.png" alt="alt">
-                <div class="comment">COMEENTCOMEEMEENTCOMEENTCOMEENTCOMEENTCOMEENTCOMEENTCOMEENTCOMEEMEENTCOMEENTCOMEENTCOMEENTCOMEENTCOMEENT</div>
-            
+    <div class="comments">
+        <div class="comment-container" *ngFor="let comment of cat?.posts">
+            <div class="username">{{comment?.userId?.username}}</div>
+            <div class="date">{{comment.created_at}}</div>
+
+            <img class="image" src="../../../assets/profile.png" alt="alt">
+            <div class="comment">{{comment.text}}</div>
+
         </div>
-     </div>
+    </div>
 
 
 
     <div class="container">
-        <form>
+        <form #form="ngForm" (ngSubmit)="commentHandler(form)">
             <mat-form-field>
                 <mat-label>Tell Us What You Think!</mat-label>
-                <textarea matInput placeholder="Write your Comment"></textarea>
+                <textarea matInput placeholder="Write your Comment" name="textInput" ngModel #textInput="ngModel"
+                    required maxLength="300"></textarea>
+                <mat-error *ngIf="textInput.errors?.['required']"> Comment required</mat-error>
+                <mat-error *ngIf="textInput.errors?.['maxlength']">Comment is can't be longer than
+                    {{textInput.errors?.['maxlength']?.['requiredLength']}} characters
+                </mat-error>
             </mat-form-field>
             <button class="submit-button" mat-raised-button color="primary" type="submit">Comment</button>
         </form>
     </div>
-
-

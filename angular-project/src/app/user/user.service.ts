@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { IUser } from '../shared/interfaces/user';
-import { BehaviorSubject, Subscription, filter, tap } from 'rxjs'
+import { BehaviorSubject, Subscription, tap } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'

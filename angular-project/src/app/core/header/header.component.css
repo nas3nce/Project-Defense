@@ -1,15 +1,16 @@
 .logo {
-  position: relative;
+  /* position: relative; */
   height: 60px;
   width: auto;
-  left: 80px;
+  /* left: 80px; */
+  margin-left: 20px;
 }
 
 .center-buttons {
   flex: 1;
   display: flex;
   justify-content: center;
-  margin-left: -6.5%;
+  /* margin-left: -6.5%; */
 }
 
 .nav-button {
@@ -30,6 +31,16 @@
 }
 
 .profile-fab {
-right: 90px;
- background-color: #87a5ff !important
+  margin-right: 40px;
+  background-color: #87a5ff !important;
+  margin-left: 6.5%;
+
+}
+
+.custom-color {
+  color: #87a5ff !important
+}
+
+.blue {
+  color: #120d72 !important;
 }

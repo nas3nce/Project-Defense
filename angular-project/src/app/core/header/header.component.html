@@ -1,22 +1,32 @@
 <div class="navbar-wrapper">
     <mat-toolbar color="primary">
 
-        <a href="">
-<div class="logo">
+        <div class="logo">
+            <a routerLink="/">
 
-        <img src="/assets/cat.png" alt="Logo" class="logo">
-    </div>
-</a>
+                <img src="/assets/cat.png" alt="Logo" class="logo">
+            </a>
+        </div>
 
 
         <div class="center-buttons">
-            <button class="nav-button" mat-button routerLink="/">Home</button>
-            <button class="nav-button" mat-button routerLink="/login">Login</button>
-            <button class="nav-button" mat-button routerLink="/register">Register</button>
-            <button class="nav-button" mat-button routerLink="/add">Add Kitten</button>
-            <button class="nav-button" mat-button routerLink="/catalog">Cats List</button>
-            <button class="nav-button" mat-button routerLink="/search">Search</button>
-            <button class="nav-button" mat-button routerLink="/about">About Us</button>
+            <button class="nav-button" mat-button routerLink="/">Home
+                <mat-icon class="custom-color">home</mat-icon>
+            </button>
+
+            <ng-container *ngIf="!user">
+                <button class="nav-button" mat-button routerLink="/user/login">Login</button>
+                <button class="nav-button" mat-button routerLink="/user/register">Register</button>
+            </ng-container>
+
+
+            <button class="nav-button" mat-button routerLink="/cats/catalog">Cats List</button>
+
+
+
+            <button *ngIf="user" class="nav-button" mat-button routerLink="/cats/add">Add Kitten</button>
+            <button class="nav-button" mat-button routerLink="/cats/search">
+                Search <mat-icon class="custom-color">search</mat-icon> </button>
         </div>
 
 
@@ -24,9 +34,15 @@
             <mat-icon color="primary">person</mat-icon>
         </button>
         <mat-menu #profileMenu="matMenu">
-            <button mat-menu-item>Profile</button>
-            <button mat-menu-item>Settings</button>
-            <button mat-menu-item>Logout</button>
+            <ng-container *ngIf="user">
+                <button class="blue" mat-menu-item >Welcome {{user.username}}!</button>
+                <button mat-menu-item routerLink="/user/profile">Profile</button>
+                <button mat-menu-item routerLink="/user/logout">Logout</button>
+            </ng-container>
+            <ng-container *ngIf="!user">
+                <button   mat-menu-item routerLink="/user/login">Login</button>
+                <button mat-menu-item routerLink="/user/register">Register</button>
+            </ng-container>
         </mat-menu>
 
 

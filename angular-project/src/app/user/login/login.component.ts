@@ -25,7 +25,7 @@ export class LoginComponent {
 
     this.userService.login(email!, password!).subscribe(user => {
       this.userService.user = user;
-      this.router.navigate(['/catalog'])
+      this.router.navigate(['cats/catalog'])
     })
   }
   
