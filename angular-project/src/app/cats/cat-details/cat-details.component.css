@@ -149,3 +149,7 @@ mat-form-field {
   word-wrap: break-word;
   overflow: hidden;
 }
+
+.disabled-btn{
+  background-color: #881616  !important;
+}

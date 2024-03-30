@@ -11,6 +11,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  passwordsHidden = true;
+
+  togglePassVisibility() {
+    this.passwordsHidden = !this.passwordsHidden
+  }
+
+
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
 

@@ -9,7 +9,7 @@ import { CatService } from '../cat.service';
 })
 export class CatalogComponent implements OnInit {
 
-  posts: IPost[] | null = null
+  posts: any
 
   constructor(private postService: CatService) { }
 
@@ -18,7 +18,6 @@ export class CatalogComponent implements OnInit {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data
     })
-
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="cards-container">
 
-    <div class="card" *ngFor="let cat of cats">
+    <div appBorderShadow class="card" *ngFor="let cat of cats">
         <a routerLink="cats/catalog/{{cat._id}}">
             <div class="a-container">
                 <img class='card-image' src="{{cat.image}}" alt="Placeholder image">

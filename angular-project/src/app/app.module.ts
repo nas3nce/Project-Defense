@@ -15,6 +15,7 @@ import { CatsModule } from './cats/cats.module';
 import { AppInterceptorProvider } from './app-interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,16 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,    
+    BrowserAnimationsModule,
+    RouterModule,
     CoreModule,
     UserModule,
     CatsModule,
-    MaterialModule,  
+    MaterialModule,
+    SharedModule
+  ],
+  exports: [
+    TestDirective
   ],
   providers: [AppInterceptorProvider],
   bootstrap: [AppComponent]
