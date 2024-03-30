@@ -1,10 +1,10 @@
 .cards-container {
-  top: 300px;
   width: 39.9%;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 .card {
@@ -52,4 +52,14 @@ button {
 a{
   color: inherit;
 text-decoration: none; 
+}
+
+
+.empty{ 
+  margin-top: 42%;
+}
+
+.h1 {
+  font-size: 40px;
+  font-weight: bolder;
 }

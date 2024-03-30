@@ -19,7 +19,7 @@
             <div class="a-container">
                 <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
                 <div class="card-content">
-                    <h2>{{cat.themeName}}</h2>
+                    <h2>{{cat.themeName | sliceText : 13}}</h2>
                     <p>{{cat.breed}}</p>
                 </div>
             </div>

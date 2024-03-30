@@ -33,16 +33,16 @@
     </div>
     -->
 
-    <div  class="div" *ngFor="let cat of posts">
+    <div class="div" *ngFor="let cat of posts">
         <a routerLink="/cats/catalog/{{cat._id}}">
             <div class="card" appBorderShadow>
                 <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
                 <div class="card-content">
-                    <h2>{{cat.themeName}}</h2>
-                    <h4>{{cat.age}}</h4>
-                    <p>{{cat.breed}}</p>
+                    <h2 class="bold">{{cat.themeName | sliceText : 22}}</h2>
+                    <h4 class="bold">Age: {{cat.age}}</h4>
+                    <p class="bold">Breed: {{cat.breed}}</p>
                     <p class="description-container">
-                        {{cat.description}}
+                        {{cat.description | sliceText : 219}}
                     </p>
                 </div>
             </div>

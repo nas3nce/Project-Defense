@@ -5,10 +5,15 @@
             <div class="a-container">
                 <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
                 <div class="card-content">
-                    <h2>{{cat.themeName}}</h2>
+                    <h2>{{(cat.themeName.length > 13)? (cat.themeName | slice:0:13)+'...':(cat.themeName) }}</h2>
                 </div>
             </div>
         </a>
     </div>
+
+    <div class="empty" *ngIf="!cats">
+        <h1 class="h1">Such empty ....</h1>
+    </div>
+
 
 </div>

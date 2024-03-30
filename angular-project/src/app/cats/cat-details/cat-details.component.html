@@ -4,6 +4,7 @@
         <div class="card" appBorderShadow>
             <img class='card-image' src="{{cat?.image}}" alt="Placeholder image">
             <div class="card-content">
+
                 <h2 class="bold">{{cat?.themeName}}</h2>
                 <h4 class="bold">Age: {{cat?.age}}</h4>
                 <p class="bold">Breed: {{cat?.breed}}</p>
@@ -23,7 +24,6 @@
                     <mat-icon>favorite</mat-icon>
                 </button>
 
-
                 <ng-container *ngIf="isOwner">
                     <button routerLink="/cats/catalog/{{cat?._id}}/edit" class="btn" color="primary" mat-fab>
                         <mat-icon>edit</mat-icon>
@@ -40,12 +40,10 @@
     <ng-container *ngIf="cat?.posts">
         <div class="comments">
             <div class="comment-container" *ngFor="let comment of cat?.posts">
-                <div class="username">{{comment?.userId?.username}}</div>
-                <div class="date">{{comment?.created_at}}</div>
-
+                <div class="username">{{comment.userId.username | sliceText : 12}}</div>
+                <div class="date">{{comment.created_at | timeFormat}}</div>
                 <img class="image" src="../../../assets/profile.png" alt="alt">
                 <div class="comment">{{comment?.text}}</div>
-
             </div>
         </div>
     </ng-container>
@@ -62,7 +60,7 @@
             </mat-form-field>
             <button *ngIf="isUser" class="submit-button" mat-raised-button color="primary"
                 type="submit">Comment</button>
-            <button *ngIf="!isUser" (click)="eventPrevent($event)" class="submit-button .disabled-btn" mat-raised-button color="primary"
-                type="submit">You need to be logged in to comment</button>
+            <button *ngIf="!isUser" (click)="eventPrevent($event)" class="submit-button .disabled-btn" mat-raised-button
+                color="primary" type="submit">You need to be logged in to comment</button>
         </form>
     </div>

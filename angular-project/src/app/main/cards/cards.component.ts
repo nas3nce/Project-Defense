@@ -9,7 +9,7 @@ import { IPost } from 'src/app/shared/interfaces/posts';
 })
 export class CardsComponent implements OnInit {
 
-  cats: IPost[] | undefined
+  cats: IPost[] | undefined = undefined
 
   constructor(private http: HttpClient) { }
 

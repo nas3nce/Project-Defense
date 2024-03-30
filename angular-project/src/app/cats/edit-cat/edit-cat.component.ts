@@ -62,7 +62,7 @@ export class EditCatComponent {
     breed: [``, Validators.required],
     age: [``, [Validators.required, Validators.min(0), Validators.max(100)]],
     image: [``, [Validators.required, Validators.pattern(this.httpPattern)]],
-    description: [``, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    description: [``, [Validators.required, Validators.minLength(3), Validators.maxLength(300)]],
   })
 
   submitHandler() {
