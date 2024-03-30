@@ -15,7 +15,9 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput type="password" placeholder="Enter your password">
+            <input formControlName="password" matInput  [type]="passwordsHidden ? 'password' : 'text'" placeholder="Enter your password" >
+            <mat-icon matSuffix (click)="togglePassVisibility()">{{ passwordsHidden ? 'visibility' :
+              'visibility_off' }}</mat-icon>
             <mat-error *ngIf="form.get('password')?.errors?.['required']"> Email is required</mat-error>
           </mat-form-field>
 

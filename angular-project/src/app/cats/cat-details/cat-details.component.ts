@@ -1,25 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CatService } from '../cat.service';
 import { IPost } from 'src/app/shared/interfaces/posts';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { NgForm } from '@angular/forms';
+import { IUser } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-cat-details',
   templateUrl: './cat-details.component.html',
-  styleUrls: ['./cat-details.component.css']
+  styleUrls: ['./cat-details.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class CatDetailsComponent implements OnInit {
 
   cat: IPost | undefined = undefined
 
-  constructor(private postService: CatService, private route: ActivatedRoute, private userService: UserService) { }
+  user: IUser | undefined = undefined
+
+  constructor(
+    private postService: CatService,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router
+  ) { }
+  
 
   ngOnInit(): void {
     const { details } = this.route.snapshot.params
 
-    this.postService.getSinglePost(details).subscribe(data => this.cat = data);
+    this.postService.getSinglePost(details).subscribe(data => this.cat = data)
+
+    this.user = this.userService.user
   }
 
   likeHandler() {
@@ -32,30 +44,38 @@ export class CatDetailsComponent implements OnInit {
 
   deleteHandler() {
     const { details } = this.route.snapshot.params
-
     this.postService.deletePost(details).subscribe();
+
+    this.router.navigate(['/cats/catalog'])
   }
 
-
   commentHandler(form: NgForm) {
-    console.log(form.value);
+    if (form.invalid) return
+    const { details } = this.route.snapshot.params
+    const commentText = form.value.textInput
 
-    this.postService.createComment(commentText).subscribe();
+    this.postService.createComment(details, commentText).subscribe(data => this.cat = data)
 
+    this.postService.getSinglePost(details).subscribe(data => this.cat = data);
+    this.postService.getSinglePost(details).subscribe(data => this.cat = data);
+    form.resetForm()
   }
 
   get IfAlreadyLiked() {
-    const userId = this.userService.user?._id
-    return this.cat?.subscribers.some(id => id == userId)
+    return this.cat?.subscribers.some(id => id == this.user?._id)
   }
 
   get isOwner() {
-    const userId = this.userService.user?._id
-    return this.cat?.userId == userId
+    return this.cat?.userId == this.user?._id
   }
 
   get isUser() {
-    return this.userService.user
+    return this.user
+  }
+
+
+  eventPrevent(event: MouseEvent) {
+    event.preventDefault()
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="cards-container">
 
     <div class="div">
-        <div class="card">
+        <div class="card" appBorderShadow>
             <img class='card-image' src="{{cat?.image}}" alt="Placeholder image">
             <div class="card-content">
                 <h2 class="bold">{{cat?.themeName}}</h2>
@@ -37,17 +37,18 @@
     </div>
 
 
+    <ng-container *ngIf="cat?.posts">
+        <div class="comments">
+            <div class="comment-container" *ngFor="let comment of cat?.posts">
+                <div class="username">{{comment?.userId?.username}}</div>
+                <div class="date">{{comment?.created_at}}</div>
 
-    <div class="comments">
-        <div class="comment-container" *ngFor="let comment of cat?.posts">
-            <div class="username">{{comment?.userId?.username}}</div>
-            <div class="date">{{comment.created_at}}</div>
+                <img class="image" src="../../../assets/profile.png" alt="alt">
+                <div class="comment">{{comment?.text}}</div>
 
-            <img class="image" src="../../../assets/profile.png" alt="alt">
-            <div class="comment">{{comment.text}}</div>
-
+            </div>
         </div>
-    </div>
+    </ng-container>
 
 
 
@@ -55,13 +56,13 @@
         <form #form="ngForm" (ngSubmit)="commentHandler(form)">
             <mat-form-field>
                 <mat-label>Tell Us What You Think!</mat-label>
-                <textarea matInput placeholder="Write your Comment" name="textInput" ngModel #textInput="ngModel"
+                <textarea matInput placeholder=" Write your Comment" name="textInput" ngModel #textInput="ngModel"
                     required maxLength="300"></textarea>
-                <mat-error *ngIf="textInput.errors?.['required']"> Comment required</mat-error>
-                <mat-error *ngIf="textInput.errors?.['maxlength']">Comment is can't be longer than
-                    {{textInput.errors?.['maxlength']?.['requiredLength']}} characters
-                </mat-error>
+                <mat-error *ngIf="textInput.errors?.['required'] && isUser"> Comment required</mat-error>
             </mat-form-field>
-            <button class="submit-button" mat-raised-button color="primary" type="submit">Comment</button>
+            <button *ngIf="isUser" class="submit-button" mat-raised-button color="primary"
+                type="submit">Comment</button>
+            <button *ngIf="!isUser" (click)="eventPrevent($event)" class="submit-button .disabled-btn" mat-raised-button color="primary"
+                type="submit">You need to be logged in to comment</button>
         </form>
     </div>

@@ -33,9 +33,9 @@
     </div>
     -->
 
-    <div class="div" *ngFor="let cat of posts">
+    <div  class="div" *ngFor="let cat of posts">
         <a routerLink="/cats/catalog/{{cat._id}}">
-            <div class="card">
+            <div class="card" appBorderShadow>
                 <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
                 <div class="card-content">
                     <h2>{{cat.themeName}}</h2>

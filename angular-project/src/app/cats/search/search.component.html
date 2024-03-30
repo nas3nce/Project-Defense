@@ -1,1 +1,31 @@
-<p>search works!</p>
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="searchHandle(form)">
+        <mat-form-field>
+            <mat-label>Search by Name/Breed</mat-label>
+            <input matInput placeholder="Write your Comment" name="query" ngModel #query="ngModel" required
+                maxLength="300">
+        </mat-form-field>
+        <button class="submit-button" mat-raised-button color="primary" type="submit">Search</button>
+    </form>
+</div>
+
+
+
+
+<div class="cards-container">
+
+    <div appBorderShadow class="card" *ngFor="let cat of cats">
+        <a routerLink="/cats/catalog/{{cat?._id}}">
+            <div class="a-container">
+                <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
+                <div class="card-content">
+                    <h2>{{cat.themeName}}</h2>
+                    <p>{{cat.breed}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div *ngIf="noResults"><h1>No Search Results Found...</h1></div>
+
+</div>
