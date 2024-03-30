@@ -39,7 +39,8 @@ export class CatDetailsComponent implements OnInit {
 
   commentHandler(form: NgForm) {
     console.log(form.value);
-    
+
+    this.postService.createComment(commentText).subscribe();
 
   }
 
