@@ -9,15 +9,21 @@ import { CatService } from '../cat.service';
 })
 export class CatalogComponent implements OnInit {
 
-  posts: any
+  cats: IPost[] | undefined 
 
   constructor(private postService: CatService) { }
 
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(data => {
-      this.posts = data
+      this.cats = data
     })
   }
+
+    
+  get ifAnyCats () {
+    return this.cats?.length !== 0 
+  }
+
 
 }

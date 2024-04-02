@@ -2,20 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPost } from '../shared/interfaces/posts';
-import { IComment } from '../shared/interfaces/commens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatService {
-
-  // private user$$ = new BehaviorSubject<undefined | IUser>(undefined);
-  // user$ = this.user$$.asObservable()
-
-  // user: IUser | undefined = undefined;
-
-  // subscription: Subscription;
-
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -30,6 +21,11 @@ export class CatService {
   getSinglePost(id: string) {
     return this.http.get<IPost>(`/api/themes/${id}`)
   }
+
+  getByUser() {
+    return this.http.get<IPost[]>(`/api/themes/byUser`)
+  }
+
 
   deletePost(id: string) {
     return this.http.delete<IPost>(`/api/themes/${id}`)

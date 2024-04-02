@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from "moment"
 
 @Pipe({
-  name: 'timeFormat'
+  name: 'elapsedTime'
 })
-export class TimeFormatPipe implements PipeTransform {
+export class elapsedTimePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
     return moment(value).fromNow()

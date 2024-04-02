@@ -66,8 +66,6 @@ export class EditCatComponent {
   })
 
   submitHandler() {
-    console.log(this.form.value);
-
     if (this.form.invalid) return
 
     const { details } = this.route.snapshot.params

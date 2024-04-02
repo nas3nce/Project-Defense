@@ -18,13 +18,12 @@ export class UserService implements OnDestroy {
   constructor(private http: HttpClient) {
     this.subscription = this.user$.subscribe(user => {
       this.user = user
-    })
-
+    });
   }
 
 
   register(username: string, email: string, password: string, rePassword: string, phone?: string) {
-    return this.http.post<IUser>('/api/register', { username, email, password, rePassword, phone }).pipe(tap(user => this.user$$.next(user)));
+    return this.http.post<IUser>('/api/register', { username, email, password, rePassword, tel: phone }).pipe(tap(user => this.user$$.next(user)));
   }
 
 
@@ -35,6 +34,12 @@ export class UserService implements OnDestroy {
 
   getUser() {
     return this.http.get<IUser>('/api/users/profile').pipe(tap(user => this.user$$.next(user)));
+  }
+
+  
+
+  editUser(username: string, email: string, phone?: string) {
+    return this.http.put<IUser>('/api/users/profile', { username, email, tel: phone }).pipe(tap(user => this.user$$.next(user)));
   }
 
 

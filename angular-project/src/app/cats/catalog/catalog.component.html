@@ -1,39 +1,9 @@
+<div class="title">
+    <h1 class="h1">This is our catalog of joy!</h1>
+</div>
 <div class="cards-container">
 
-    <!-- <div class="div">
-        <a routerLink="/cats/catalog/details">
-            <div class="card">
-                <img class='card-image' src="../../../assets/download.jpg" alt="Placeholder image">
-                <div class="card-content">
-                    <h2>Name</h2>
-                    <h4>age</h4>
-                    <p>breed</p>
-                    <p class="description-container">
-                        DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
-                    </p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="div">
-        <a routerLink="/cats/catalog/details">
-            <div class="card">
-                <img class='card-image' src="../../../assets/download (1).jpg" alt="Placeholder image">
-                <div class="card-content">
-                    <h2>Name</h2>
-                    <h4>age</h4>
-                    <p>breed</p>
-                    <p class="description-container">
-                        DetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDetailsDeails
-                    </p>
-                </div>
-            </div>
-        </a>
-    </div>
-    -->
-
-    <div class="div" *ngFor="let cat of posts">
+    <div class="div" *ngFor="let cat of cats">
         <a routerLink="/cats/catalog/{{cat._id}}">
             <div class="card" appBorderShadow>
                 <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
@@ -49,8 +19,10 @@
         </a>
     </div>
 
-
-
-
-
+    <div class="empty" *ngIf="!ifAnyCats">
+        <h1 class="h1"> Such Empty ...</h1>
+        <a routerLink="/cats/add">
+            <h3>Click to add the first Kitten !</h3>
+        </a>
+    </div>
 </div>

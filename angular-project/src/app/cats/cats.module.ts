@@ -9,8 +9,6 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/material.module';
 import { SearchComponent } from './search/search.component';
 import { EditCatComponent } from './edit-cat/edit-cat.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { TestDirective } from '../test.directive';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -24,7 +22,6 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     RouterModule,
-    BrowserModule,
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,

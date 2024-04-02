@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { UserRoutingModule } from './user-routing.module';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserPostsComponent } from './user-posts/user-posts.component';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -19,17 +21,20 @@ import { SharedModule } from '../shared/shared.module';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    EditProfileComponent,
+    UserPostsComponent
   ],
   imports: [
     CommonModule,
+    UserRoutingModule,
     RouterModule,
     MaterialModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    UserRoutingModule,
+    SharedModule
   ]
 })
 export class UserModule { }

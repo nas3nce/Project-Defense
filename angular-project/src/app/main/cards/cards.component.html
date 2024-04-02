@@ -11,8 +11,11 @@
         </a>
     </div>
 
-    <div class="empty" *ngIf="!cats">
+    <div class="empty" *ngIf="!ifAnyCats">
         <h1 class="h1">Such empty ....</h1>
+        <a routerLink="/cats/add">
+            <h3>Click to add the first Kitten !</h3>
+        </a>
     </div>
 
 

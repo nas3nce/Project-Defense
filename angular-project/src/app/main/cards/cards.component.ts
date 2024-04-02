@@ -18,5 +18,9 @@ export class CardsComponent implements OnInit {
       this.cats = data
     })
   }
+  
+  get ifAnyCats () {
+    return this.cats?.length !== 0 
+  }
 
 }

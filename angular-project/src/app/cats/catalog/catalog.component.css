@@ -67,3 +67,22 @@ button {
   font-weight: bold;
 }
 
+.empty{ 
+  margin-top: 15%;
+}
+
+.h1 {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+.title{
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  left: 37%;
+}

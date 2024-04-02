@@ -3,7 +3,10 @@
     <div class="div">
         <div class="card" appBorderShadow>
             <img class='card-image' src="{{cat?.image}}" alt="Placeholder image">
+
             <div class="card-content">
+                <div class="postedBy">Post By: {{cat?.userId?.username | titlecase}}</div>
+                <div class="postedOn">{{cat?.created_at | date : "dd.MM.YY"}}</div>
 
                 <h2 class="bold">{{cat?.themeName}}</h2>
                 <h4 class="bold">Age: {{cat?.age}}</h4>
@@ -28,24 +31,33 @@
                     <button routerLink="/cats/catalog/{{cat?._id}}/edit" class="btn" color="primary" mat-fab>
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button (click)="deleteHandler()" class="btn" color="primary" mat-fab>
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                    <mat-dialog-actions>
+
+                        <button (click)="deleteHandler()" class="btn" color="primary" mat-fab>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-dialog-actions>
+
                 </ng-container>
+
+
             </div>
         </div>
     </div>
 
 
+
+
     <ng-container *ngIf="cat?.posts">
         <div class="comments">
             <div class="comment-container" *ngFor="let comment of cat?.posts">
-                <div class="username">{{comment.userId.username | sliceText : 12}}</div>
-                <div class="date">{{comment.created_at | timeFormat}}</div>
+                <div class="username">{{comment.userId.username| sliceText : 12}}</div>
+                <div class="date">{{comment.created_at | elapsedTime}}</div>
                 <img class="image" src="../../../assets/profile.png" alt="alt">
                 <div class="comment">{{comment?.text}}</div>
             </div>
         </div>
+
     </ng-container>
 
 

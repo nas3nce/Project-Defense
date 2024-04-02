@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<div class="cards-container">
+
+    <div class="div">
+        <div class="card" appBorderShadow>
+            <img class='card-image' src="./assets/profile.png" alt="Placeholder image">
+
+            <div class="card-content">
+                
+                <h2 class="bold">Username:   {{user?.username | titlecase}}</h2>
+                <h4 class="bold">Email: {{user?.email}}</h4>
+                <p class="bold">Added {{user?.themes?.length}} kittens</p>
+                <p class="bold">Posted {{user?.posts?.length}} comments</p>
+           
+          
+                
+                <div class="postedOn">Created on: {{user?.created_at | date : "dd.MM.YY"}}</div>
+<div class="btn-container">
+
+    <button class="btn-view-all" mat-raised-button color="primary" routerLink="/user/user-posts" >View All Posts</button>
+    <button class="btn-edit" mat-raised-button color="primary" routerLink="/user/edit" >Edit Profile</button>
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+   
+
+
+

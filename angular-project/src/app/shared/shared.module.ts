@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BorderShadowDirective } from './directives/border-shadow.directive';
 import { SliceTextPipe } from './pipes/slice-text.pipe';
-import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { elapsedTimePipe } from './pipes/elapsedTime.pipe';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { MaterialModule } from 'src/material.module';
 
 
 
@@ -10,15 +12,18 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
   declarations: [
     BorderShadowDirective,
     SliceTextPipe,
-    TimeFormatPipe
+    elapsedTimePipe,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,
+    MaterialModule
   ],
   exports: [
     BorderShadowDirective,
     SliceTextPipe,
-    TimeFormatPipe
+    elapsedTimePipe,
+    DeleteDialogComponent
   ]
 })
 export class SharedModule { }

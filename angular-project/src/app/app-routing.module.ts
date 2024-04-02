@@ -1,21 +1,32 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main/main.component';
-import { LogoutComponent } from './user/logout/logout.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: MainComponent,
-    data: {title : "Home"}
+    data: { title: "Home" }
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+    data: { title: 'Page Not Found' }
+  },
+  {
+    path: 'cats',
+    loadChildren: () => import('./cats/cats.module').then(m => m.CatsModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

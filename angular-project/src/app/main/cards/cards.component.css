@@ -63,3 +63,7 @@ text-decoration: none;
   font-size: 40px;
   font-weight: bolder;
 }
+
+h3 {
+  text-decoration: underline;
+}

@@ -74,8 +74,6 @@ function like(req, res, next) {
     const { postId } = req.params;
     const { _id: userId } = req.user;
 
-    console.log('like')
-
     postModel.updateOne({ _id: postId }, { $addToSet: { likes: userId } }, { new: true })
         .then(() => res.status(200).json({ message: 'Liked successful!' }))
         .catch(next)

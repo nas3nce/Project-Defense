@@ -17,8 +17,15 @@ function getTheme(req, res, next) {
             populate: {
                 path: 'userId'
             }
-        })
+        }).populate('userId')
         .then(theme => res.json(theme))
+        .catch(next);
+}
+
+function getByUser(req, res, next) {
+    const { _id } = req.user;
+    themeModel.find({ userId: _id })
+        .then(themes => res.json(themes))
         .catch(next);
 }
 
@@ -61,7 +68,6 @@ function subscribe(req, res, next) {
 function editTheme(req, res, next) {
     const themeId = req.params.themeId;
     const { _id: userId } = req.user;
-    console.log(req.body);
     themeModel.findByIdAndUpdate({ _id: themeId }, req.body)
         .then(updatedTheme => {
             res.status(200).json(updatedTheme);
@@ -72,7 +78,6 @@ function editTheme(req, res, next) {
 function search(req, res, next) {
     const { query } = req.body;
     const breed = query;
-    console.log(req.body);
 
     themeModel.find()
         .populate('userId')
@@ -96,8 +101,6 @@ function search(req, res, next) {
 
             themes = (uniqueResultOne.concat(uniqueResultTwo)).concat(matchingByBoth);
 
-            console.log({ themes });
-
             res.json(themes);
         })
         .catch(next);
@@ -111,5 +114,6 @@ module.exports = {
     deleteTheme,
     editTheme,
     getLastFour,
-    search
+    search,
+    getByUser
 };

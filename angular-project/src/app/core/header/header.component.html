@@ -35,9 +35,11 @@
         </button>
         <mat-menu #profileMenu="matMenu">
             <ng-container *ngIf="user">
-                <button class="blue" mat-menu-item>Welcome {{user.username.length > 10 ?
-                    (user.username | slice : 0 :10) + '...' : user.username + '!'}}</button>
-                <button mat-menu-item routerLink="/user/profile">Profile</button>
+                <button routerLink="/user/profile" mat-menu-item> {{user.username.length > 10 ?
+                    (user.username | titlecase | slice : 0 :10) + '... profile!' : (user.username | titlecase) + '\'s profile!'
+                    }}</button>
+                <button mat-menu-item routerLink="/user/user-posts">Your Posts</button>
+                <button mat-menu-item routerLink="/user/edit">Edit Profile</button>
                 <button mat-menu-item routerLink="/user/logout">Logout</button>
             </ng-container>
             <ng-container *ngIf="!user">

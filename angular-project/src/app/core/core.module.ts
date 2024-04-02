@@ -4,24 +4,28 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from 'src/material.module';
 import { RouterModule } from '@angular/router';
-import { CatsModule } from '../cats/cats.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NotFoundComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
-    CatsModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NotFoundComponent,
+    ErrorComponent
   ]
 })
 export class CoreModule { }

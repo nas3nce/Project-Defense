@@ -7,6 +7,7 @@ const { themeController, postController } = require('../controllers');
 
 router.get('/', themeController.getThemes);
 router.get('/home', themeController.getLastFour);
+router.get('/byUser',auth(), themeController.getByUser);
 
 router.post('/', auth(), themeController.createTheme);
 

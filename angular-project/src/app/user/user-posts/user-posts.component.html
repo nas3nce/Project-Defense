@@ -1,0 +1,29 @@
+<div class="title">
+    <h1 class="h1"> All your posts!</h1>
+</div>
+
+<div class="cards-container">
+
+    <div class="div" *ngFor="let cat of cats">
+        <a routerLink="/cats/catalog/{{cat._id}}">
+            <div class="card" appBorderShadow>
+                <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
+                <div class="card-content">
+                    <h2 class="bold">{{cat.themeName | sliceText : 22}}</h2>
+                    <h4 class="bold">Age: {{cat.age}}</h4>
+                    <p class="bold">Breed: {{cat.breed}}</p>
+                    <p class="description-container">
+                        {{cat.description | sliceText : 219}}
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="empty" *ngIf="!ifAnyCats">
+        <h1 class="h1"> Such Empty ...</h1>
+        <a routerLink="/cats/add">
+            <h3>Click to add your first Kitten !</h3>
+        </a>
+    </div>
+</div>

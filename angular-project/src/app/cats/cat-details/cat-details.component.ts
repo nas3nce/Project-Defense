@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { NgForm } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces/user';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-cat-details',
@@ -22,9 +24,15 @@ export class CatDetailsComponent implements OnInit {
     private postService: CatService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog
   ) { }
-  
+
+  // openDialog() {
+  //   this.matDialog.open(DeleteDialogComponent)
+  // }
+
+
 
   ngOnInit(): void {
     const { details } = this.route.snapshot.params
@@ -32,6 +40,8 @@ export class CatDetailsComponent implements OnInit {
     this.postService.getSinglePost(details).subscribe(data => this.cat = data)
 
     this.user = this.userService.user
+
+
   }
 
   likeHandler() {
@@ -43,6 +53,10 @@ export class CatDetailsComponent implements OnInit {
   }
 
   deleteHandler() {
+    if (!confirm('Are you sure you want to delete this post?')) {
+      return
+    }
+
     const { details } = this.route.snapshot.params
     this.postService.deletePost(details).subscribe();
 
@@ -58,6 +72,7 @@ export class CatDetailsComponent implements OnInit {
 
     this.postService.getSinglePost(details).subscribe(data => this.cat = data);
     this.postService.getSinglePost(details).subscribe(data => this.cat = data);
+
     form.resetForm()
   }
 
@@ -66,7 +81,7 @@ export class CatDetailsComponent implements OnInit {
   }
 
   get isOwner() {
-    return this.cat?.userId == this.user?._id
+    return this.cat?.userId._id == this.user?._id
   }
 
   get isUser() {
@@ -77,5 +92,6 @@ export class CatDetailsComponent implements OnInit {
   eventPrevent(event: MouseEvent) {
     event.preventDefault()
   }
+
 
 }
