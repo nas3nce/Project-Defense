@@ -43,11 +43,12 @@ export class AddCatComponent implements OnInit {
   })
 
   submitHandler() {
+    if (this.form.invalid) return
     const { name, breed, age, image, description } = this.form.value
 
     const themeName = name
 
-    this.postService.createPost(themeName!,  breed!, age!, image!, description!).subscribe(data => {
+    this.postService.createPost(themeName!, breed!, age!, image!, description!).subscribe(data => {
       const id = data._id
       this.router.navigate([`/cats/catalog/${id}`])
     });

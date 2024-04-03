@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { IUser } from '../shared/interfaces/user';
-import { BehaviorSubject, Subscription, tap } from 'rxjs'
+import { BehaviorSubject, Subscription, catchError, tap } from 'rxjs'
+import { ErrorService } from '../core/error/error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class UserService implements OnDestroy {
 
 
   login(email: string, password: string) {
-    return this.http.post<IUser>(`/api/login`, { email, password }).pipe(tap(user => this.user$$.next(user)));
+    return this.http.post<IUser>(`/api/login`, { email, password }).pipe(tap(user => this.user$$.next(user)))
   }
 
 
@@ -36,7 +37,7 @@ export class UserService implements OnDestroy {
     return this.http.get<IUser>('/api/users/profile').pipe(tap(user => this.user$$.next(user)));
   }
 
-  
+
 
   editUser(username: string, email: string, phone?: string) {
     return this.http.put<IUser>('/api/users/profile', { username, email, tel: phone }).pipe(tap(user => this.user$$.next(user)));

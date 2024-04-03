@@ -13,6 +13,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -34,7 +35,8 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ]
 })
 export class UserModule { }

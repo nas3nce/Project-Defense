@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { emailValidator } from 'src/app/shared/validators/email-validator';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { IUser } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
   }
 
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private cdr: ChangeDetectorRef) { }
 
 
   form = this.fb.group({
@@ -28,13 +29,13 @@ export class LoginComponent {
 
 
   loginHandler() {
+    if (this.form.invalid) return
     const { email, password } = this.form.value;
 
     this.userService.login(email!, password!).subscribe(user => {
       this.userService.user = user;
       this.router.navigate(['cats/catalog'])
-    })
+    });
   }
-  
-  
+
 }
