@@ -150,16 +150,27 @@ mat-form-field {
   overflow: hidden;
 }
 
-.disabled-btn{
-  background-color: #881616  !important;
+.disabled-btn {
+  background-color: #881616 !important;
 }
 
 .postedBy {
-position: absolute;
-top: 100px;
+  position: absolute;
+  top: 100px;
 }
 
 .postedOn {
   position: absolute;
 
-    }
+}
+
+
+.spinner-container {
+position: relative;
+width: 100%;
+height: 80%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+

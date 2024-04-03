@@ -5,6 +5,7 @@ import { SliceTextPipe } from './pipes/slice-text.pipe';
 import { elapsedTimePipe } from './pipes/elapsedTime.pipe';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MaterialModule } from 'src/material.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
@@ -13,7 +14,8 @@ import { MaterialModule } from 'src/material.module';
     BorderShadowDirective,
     SliceTextPipe,
     elapsedTimePipe,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { MaterialModule } from 'src/material.module';
     BorderShadowDirective,
     SliceTextPipe,
     elapsedTimePipe,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule { }

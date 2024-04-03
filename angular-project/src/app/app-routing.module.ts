@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main/main.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
     path: 'not-found',
     component: NotFoundComponent,
     data: { title: 'Page Not Found' }
+  },
+  {
+    path: 'spinner',
+    component: SpinnerComponent
   },
   {
     path: 'cats',
