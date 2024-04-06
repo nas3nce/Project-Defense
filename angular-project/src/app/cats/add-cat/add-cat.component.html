@@ -1,4 +1,3 @@
-<!-- Container with black border -->
 <div class="container">
     <div class="register-form">
         <h2 class="form-title">Add Kitten</h2>
@@ -8,7 +7,7 @@
                 <form [formGroup]="form" (ngSubmit)="submitHandler()">
                     <mat-form-field appearance="fill">
                         <mat-label>Name</mat-label>
-                        <input matInput formControlName="name" placeholder="Enter cats name">
+                        <input matInput formControlName="name" placeholder="Enter cat name">
                         <mat-error *ngIf="form.get('name')?.errors?.['required']">
                             Cat name is required</mat-error>
                         <mat-error *ngIf="form.get('name')?.errors?.['minlength']">
@@ -35,26 +34,24 @@
 
                     <mat-form-field appearance="fill">
                         <mat-label>Age</mat-label>
-                        <input matInput formControlName="age" type="number" placeholder="Enter cats age" #ageInput>
+                        <input matInput formControlName="age" type="number" placeholder="Enter cat age" #ageInput>
                         <mat-error *ngIf="form.get('age')?.errors?.['required']">
                             Cat name is required</mat-error>
                         <mat-error *ngIf="form.get('age')?.errors?.['min']">
-                            Cats age can't be negative number</mat-error>
+                            Cat age can't be negative number</mat-error>
                         <mat-error *ngIf="form.get('age')?.errors?.['max']">
-                            Cats age must be below 100
+                            Cat age must be below 100
                         </mat-error>
-                        <!-- <mat-hint *ngIf="form.get('age')?.errors?.['oldestCat'] && form.get('age')?.touched">
-                            Submit This Cat to The Guinness Book of World Records!</mat-hint> -->
+                        <mat-hint *ngIf="catAge > 38" class="green">{{oldestCatString}}</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
                         <mat-label>Image</mat-label>
                         <input matInput formControlName="image" placeholder="Enter image link">
                         <mat-error *ngIf="form.get('image')?.errors?.['required']"> Image is required" </mat-error>
-                        <mat-error *ngIf="form.get('image')?.errors?.['pattern']"> Image should be a valid kink
+                        <mat-error *ngIf="form.get('image')?.errors?.['pattern']"> Image should be a valid link
                             "http://" or "https://" </mat-error>
                     </mat-form-field>
-
 
                     <mat-form-field>
                         <mat-label>Description</mat-label>
@@ -66,7 +63,6 @@
                         <mat-error *ngIf="form.get('description')?.errors?.['maxlength']">Description is too
                             long</mat-error>
                     </mat-form-field>
-
 
 
                     <button class="submit-button" mat-raised-button color="primary" type="submit">Add Kitten</button>

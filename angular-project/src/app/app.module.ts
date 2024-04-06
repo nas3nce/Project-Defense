@@ -13,8 +13,8 @@ import { AppInterceptorProvider } from './app-interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { UserGuard } from './core/guards/user-guard';
 import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { UserModule } from './user/user.module';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
-    UserModule,
+    HttpClientModule,
     AppRoutingModule,
   ],
   providers: [AppInterceptorProvider],

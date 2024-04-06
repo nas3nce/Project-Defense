@@ -15,7 +15,7 @@ export class ErrorComponent {
   constructor(private errorService: ErrorService, private router: Router) {
 
     this.errorService.apiError$.subscribe((err: any) => {
-      if (err.status == 500) return this.errMessage = 'Page Not Found'
+      if (err.status == 500) return this.errMessage = 'No Such Cat In The Litter ;('
       if (err.status === 401) return this.errMessage = 'Wrong Email or Password'
 
       return this.errMessage = err?.message || ''

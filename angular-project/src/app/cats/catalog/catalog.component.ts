@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPost } from 'src/app/shared/interfaces/posts';
 import { CatService } from '../cat.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-catalog',
@@ -9,9 +10,9 @@ import { CatService } from '../cat.service';
 })
 export class CatalogComponent implements OnInit {
 
-  cats: IPost[] | undefined 
+  cats: IPost[] | undefined
 
-  constructor(private postService: CatService) { }
+  constructor(private postService: CatService, private userService: UserService) { }
 
 
   ngOnInit(): void {
@@ -20,9 +21,12 @@ export class CatalogComponent implements OnInit {
     })
   }
 
-    
-  get ifAnyCats () {
-    return this.cats?.length !== 0 
+  get user() {
+    return this.userService.user
+  }
+
+  get ifAnyCats() {
+    return this.cats?.length !== 0
   }
 
 

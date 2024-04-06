@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class AddCatComponent implements OnInit {
 
+  oldestCatString: string = 'Whoa!!! your Cat is the OLDEST cat in the World!'
+
   options: string[] = catBreeds;
   filteredOptions: Observable<string[]> = new Observable
 
@@ -54,5 +56,10 @@ export class AddCatComponent implements OnInit {
     });
 
   }
+
+  get catAge() {
+    return Number(this.form.value.age)
+  }
+
 }
 

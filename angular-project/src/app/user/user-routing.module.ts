@@ -10,9 +10,10 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 
 
-const routes: Routes = [{
-    path: 'user',
-    children: [
+const routes: Routes = [
+    // {
+    // path: 'user',
+    // children: [
         {
             path: 'login',
             component: LoginComponent,
@@ -48,8 +49,9 @@ const routes: Routes = [{
             component: LogoutComponent,
             canActivate: [GuestGuard]
         }
-    ]
-}];
+    // ]
+// }
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

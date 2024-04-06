@@ -7,33 +7,33 @@
     <ng-container *ngIf="cat">
         <div class="div">
             <div class="card" appBorderShadow>
-                <img class='card-image' src="{{cat?.image}}" alt="Placeholder image">
+                <img class='card-image' src="{{cat.image}}" alt="Placeholder image">
 
                 <div class="card-content">
-                    <div class="postedBy">Post By: {{cat?.userId?.username | titlecase}}</div>
-                    <div class="postedOn">{{cat?.created_at | date : "dd.MM.YY"}}</div>
+                    <div class="postedBy">Post By: {{cat.userId.username | titlecase}}</div>
+                    <div class="postedOn">{{cat.created_at | date : "dd.MM.YY"}}</div>
 
-                    <h2 class="bold">{{cat?.themeName}}</h2>
-                    <h4 class="bold">Age: {{cat?.age}}</h4>
-                    <p class="bold">Breed: {{cat?.breed}}</p>
+                    <h2 class="bold">{{cat.themeName}}</h2>
+                    <h4 class="bold">Age: {{cat.age}}</h4>
+                    <p class="bold">Breed: {{cat.breed}}</p>
                     <p class="description-container">
-                        {{cat?.description}}
+                        {{cat.description}}
                     </p>
 
                     <button *ngIf="!isUser || IfAlreadyLiked" disabled="true" class="btn pink" mat-fab color="primary"
                         aria-label="Example icon button with a heart icon">
-                        {{cat?.subscribers?.length}}
+                        {{cat.subscribers.length}}
                         <mat-icon>favorite</mat-icon>
                     </button>
 
                     <button *ngIf="isUser && !IfAlreadyLiked" (click)="likeHandler()" class="btn pink" mat-fab
                         color="primary" aria-label="Example icon button with a heart icon">
-                        {{cat?.subscribers?.length}}
+                        {{cat.subscribers.length}}
                         <mat-icon>favorite</mat-icon>
                     </button>
 
                     <ng-container *ngIf="isOwner">
-                        <button routerLink="/cats/catalog/{{cat?._id}}/edit" class="btn" color="primary" mat-fab>
+                        <button routerLink="/cats/catalog/{{cat._id}}/edit" class="btn" color="primary" mat-fab>
                             <mat-icon>edit</mat-icon>
                         </button>
                         <mat-dialog-actions>

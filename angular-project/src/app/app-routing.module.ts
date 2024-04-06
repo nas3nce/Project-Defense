@@ -21,6 +21,10 @@ const routes: Routes = [
     component: SpinnerComponent
   },
   {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
     path: 'cats',
     loadChildren: () => import('./cats/cats.module').then(m => m.CatsModule)
   },
@@ -31,7 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

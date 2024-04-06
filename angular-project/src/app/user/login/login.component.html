@@ -6,7 +6,7 @@
         <form [formGroup]="form" (ngSubmit)="loginHandler()">
           
           <mat-form-field appearance="fill">
-            <mat-label>Email / Username</mat-label>
+            <mat-label>Email</mat-label>
             <input formControlName="email" matInput placeholder="Enter your email or username ">
             <mat-error *ngIf="form.get('email')?.errors?.['required']"> Email is required</mat-error>
             <mat-error *ngIf="!form.get('email')?.errors?.['required'] && form.get('email')?.errors?.['emailInvalid']">
@@ -18,7 +18,7 @@
             <input formControlName="password" matInput  [type]="passwordsHidden ? 'password' : 'text'" placeholder="Enter your password" >
             <mat-icon matSuffix (click)="togglePassVisibility()">{{ passwordsHidden ? 'visibility' :
               'visibility_off' }}</mat-icon>
-            <mat-error *ngIf="form.get('password')?.errors?.['required']"> Email is required</mat-error>
+            <mat-error *ngIf="form.get('password')?.errors?.['required']"> Password is required</mat-error>
           </mat-form-field>
 
           <button class="submit-button" mat-raised-button color="primary" type="submit">Login</button>

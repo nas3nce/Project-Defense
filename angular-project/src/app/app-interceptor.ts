@@ -30,10 +30,7 @@ export class AppInterceptor implements HttpInterceptor {
           if (err.status === 401 && err.url == 'http://localhost:3000/api/login') {
             this.errorService.setError(err)
           } else if (err.status === 401) {
-            {
-              this.router.navigate(['/user/login']);
-            }
-
+            return [err]
           } else {
             this.errorService.setError(err)
             this.router.navigate(['/errorHandle'])
