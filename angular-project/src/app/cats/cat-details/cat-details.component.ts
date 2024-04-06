@@ -5,8 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { NgForm } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces/user';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/shared/delete-dialog/delete-dialog.component';
+import { Observable } from 'rxjs/internal/Observable';
+import { mergeMap, switchMap } from 'rxjs';
+
 
 @Component({
   selector: 'app-cat-details',
@@ -20,18 +21,13 @@ export class CatDetailsComponent implements OnInit {
 
   user: IUser | undefined = undefined
 
+
   constructor(
     private postService: CatService,
     private route: ActivatedRoute,
     private userService: UserService,
     private router: Router,
-    private matDialog: MatDialog
   ) { }
-
-  // openDialog() {
-  //   this.matDialog.open(DeleteDialogComponent)
-  // }
-
 
 
   ngOnInit(): void {
@@ -40,8 +36,6 @@ export class CatDetailsComponent implements OnInit {
     this.postService.getSinglePost(details).subscribe(data => this.cat = data)
 
     this.user = this.userService.user
-
-
   }
 
   likeHandler() {
@@ -68,10 +62,9 @@ export class CatDetailsComponent implements OnInit {
     const { details } = this.route.snapshot.params
     const commentText = form.value.textInput
 
-    this.postService.createComment(details, commentText).subscribe(data => this.cat = data)
-
-    this.postService.getSinglePost(details).subscribe(data => this.cat = data);
-    this.postService.getSinglePost(details).subscribe(data => this.cat = data);
+    this.postService.createComment(details, commentText).pipe(
+      switchMap(() => this.postService.getSinglePost(details))
+    ).subscribe(data => this.cat = data)
 
     form.resetForm()
   }
@@ -87,7 +80,7 @@ export class CatDetailsComponent implements OnInit {
   get isUser() {
     return this.user
   }
-
+  
 
   eventPrevent(event: MouseEvent) {
     event.preventDefault()

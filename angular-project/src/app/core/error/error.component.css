@@ -1,8 +1,10 @@
 /* The alert message box */
 .alert {
-  position: relative;
-  padding: 20px;
+  position: absolute;
+  width: 100%;
   background-color: #f44336;
+  padding-top: 20px;
+  padding-bottom: 20px;
   /* Red */
   color: white;
   margin-bottom: 15px;

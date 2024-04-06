@@ -53,32 +53,32 @@
 
 
 
-    <ng-container *ngIf="cat?.posts">
-        <div class="comments">
-            <div class="comment-container" *ngFor="let comment of cat?.posts">
-                <div class="username">{{comment.userId.username| sliceText : 12}}</div>
-                <div class="date">{{comment.created_at | elapsedTime}}</div>
-                <img class="image" src="../../../assets/profile.png" alt="alt">
-                <div class="comment">{{comment?.text}}</div>
+        <ng-container *ngIf="cat?.posts">
+            <div class="comments">
+                <div class="comment-container" *ngFor="let comment of cat?.posts">
+                    <div class="username">{{comment.userId.username| sliceText : 12}}</div>
+                    <div class="date">{{comment.created_at | elapsedTime}}</div>
+                    <img class="image" src="../../../assets/profile.png" alt="alt">
+                    <div class="comment">{{comment?.text}}</div>
+                </div>
             </div>
+
+        </ng-container>
+
+
+
+        <div class="container">
+            <form #form="ngForm" (ngSubmit)="commentHandler(form)">
+                <mat-form-field>
+                    <mat-label>Tell Us What You Think!</mat-label>
+                    <textarea matInput placeholder=" Write your Comment" name="textInput" ngModel #textInput="ngModel"
+                        required maxLength="300"></textarea>
+                    <mat-error *ngIf="textInput.errors?.['required'] && isUser"> Comment required</mat-error>
+                </mat-form-field>
+                <button *ngIf="isUser" class="submit-button" mat-raised-button color="primary"
+                    type="submit">Comment</button>
+                <button *ngIf="!isUser" (click)="eventPrevent($event)" class="submit-button .disabled-btn"
+                    mat-raised-button color="primary" type="submit">You need to be logged in to comment</button>
+            </form>
         </div>
-
     </ng-container>
-
-
-
-    <div class="container">
-        <form #form="ngForm" (ngSubmit)="commentHandler(form)">
-            <mat-form-field>
-                <mat-label>Tell Us What You Think!</mat-label>
-                <textarea matInput placeholder=" Write your Comment" name="textInput" ngModel #textInput="ngModel"
-                    required maxLength="300"></textarea>
-                <mat-error *ngIf="textInput.errors?.['required'] && isUser"> Comment required</mat-error>
-            </mat-form-field>
-            <button *ngIf="isUser" class="submit-button" mat-raised-button color="primary"
-                type="submit">Comment</button>
-            <button *ngIf="!isUser" (click)="eventPrevent($event)" class="submit-button .disabled-btn" mat-raised-button
-                color="primary" type="submit">You need to be logged in to comment</button>
-        </form>
-    </div>
-</ng-container>

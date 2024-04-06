@@ -4,6 +4,7 @@ import { emailValidator } from 'src/app/shared/validators/email-validator';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces/user';
+import { ErrorService } from 'src/app/core/error/error.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,12 @@ export class LoginComponent {
     this.passwordsHidden = !this.passwordsHidden
   }
 
-
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private errorService: ErrorService,
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) { }
 
 
   form = this.fb.group({
@@ -36,6 +41,8 @@ export class LoginComponent {
       this.userService.user = user;
       this.router.navigate(['cats/catalog'])
     });
+
+    this.errorService.setError('')
   }
 
 }

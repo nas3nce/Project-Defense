@@ -4,8 +4,8 @@ function newPost(text, userId, themeId) {
     return postModel.create({ text, userId, themeId })
         .then(post => {
             return Promise.all([
-                userModel.updateOne({ _id: userId }, { $push: { posts: post._id }, $addToSet: { themes: themeId } }),
-                themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }}, { new: true })  //, $addToSet: { subscribers: userId } 
+                userModel.updateOne({ _id: userId }, { $push: { posts: post }, $addToSet: { themes: themeId } }),
+                themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts : post }}, { new: true })  //, $addToSet: { subscribers: userId } 
             ])
         })
 }
@@ -29,7 +29,8 @@ function createPost(req, res, next) {
     const { postText } = req.body;
 
     newPost(postText, userId, themeId)
-        .then(([_, updatedTheme]) => res.status(200).json(updatedTheme))
+        .then(([_, updatedTheme]) => 
+        res.status(200).json(updatedTheme))
         .catch(next);
 }
 

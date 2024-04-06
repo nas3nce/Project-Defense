@@ -1,14 +1,30 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPost } from '../shared/interfaces/posts';
+import { BehaviorSubject, Subscription, filter, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CatService {
+export class CatService implements OnDestroy {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  private cat$$ = new BehaviorSubject<undefined | null | IPost>(undefined);
+  cat$ = this.cat$$.asObservable()
+    .pipe(filter((val): val is IPost | null => val !== undefined))
+
+
+  cat: IPost | null = null
+
+  subscription: Subscription;
+
+
+  constructor(private http: HttpClient, private router: Router) {
+    this.subscription = this.cat$
+      .subscribe(data => {
+        this.cat = data
+      })
+  }
 
   createPost(themeName: string, breed: string, age: string, image: string, description: string) {
     return this.http.post<IPost>('/api/themes', { themeName, breed, age, image, description })
@@ -20,6 +36,7 @@ export class CatService {
 
   getSinglePost(id: string) {
     return this.http.get<IPost>(`/api/themes/${id}`)
+      .pipe(tap(data => this.cat$$.next(data)))
   }
 
   getByUser() {
@@ -47,6 +64,10 @@ export class CatService {
 
   search(query: string) {
     return this.http.post<IPost[]>(`/api/themes/search`, { query })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
 }

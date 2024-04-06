@@ -28,12 +28,12 @@ export class AppInterceptor implements HttpInterceptor {
       .pipe(
         catchError(err => {
           if (err.status === 401 && err.url == 'http://localhost:3000/api/login') {
-            console.log('intercepted');
-            
             this.errorService.setError(err)
-          }
-          if (err.status === 401) {
-            this.router.navigate(['/user/login']);
+          } else if (err.status === 401) {
+            {
+              this.router.navigate(['/user/login']);
+            }
+
           } else {
             this.errorService.setError(err)
             this.router.navigate(['/errorHandle'])

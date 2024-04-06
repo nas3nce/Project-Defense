@@ -7,22 +7,22 @@ import { IPost } from "../interfaces/posts";
 
 
 
-@Injectable({
-    providedIn: 'root'
-})
+// @Injectable({
+//     providedIn: 'root'
+// })
 
-export class PostIdResolver implements Resolve<IPost | null> {
+// export class PostIdResolver implements Resolve<IPost | null> {
 
-    constructor(private postService: CatService, private router: Router) { }
+//     constructor(private postService: CatService, private router: Router) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): IPost | null | Observable<IPost | null> {
-        const details = route.params['details'];
+//     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): IPost | null | Observable<IPost | null> {
+//         const details = route.params['details'];
 
-        if (!details) {
-            this.router.navigate(['not-found'])
-            return null
-        }
+//         if (!details) {
+//             this.router.navigate(['not-found'])
+//             return null
+//         }
 
-        return this.postService.getSinglePost(details)
-    }
-}
+//         return this.postService.getSinglePost(details)
+//     }
+// }
